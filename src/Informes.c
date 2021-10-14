@@ -152,16 +152,14 @@ void imprimirClienteConMasPendientes(Cli listaClientes[], Pedido listaPedidos[],
 	int i;
 	int foreignKey;
 	int contadorPedidos;
+	int contadorClientes[100];
 	contadorPedidos=0;
 	for(i=0;i<1000;i++){
 		foreignKey = listaPedidos[i].numCliente;
 		if(listaPedidos[i].estadoPedido==0 && listaClientes[i].idCliente==foreignKey){
-			contadorPedidos
+			contadorClientes[foreignKey]++;
 		}
 	}
-
-
-	printf("Cantidad de pedidos pendientes en la localidad de %s : %d \n",localidad,contadorLocalidad);
 
 }
 
