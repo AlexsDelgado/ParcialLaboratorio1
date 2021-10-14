@@ -10,12 +10,12 @@
 
 int menu(){ //printf de las opciones y recupera la deseada
 	int opcionMenu;
-	printf("\n *********************************\nIngrese: \n 1_Alta de cliente\n 2_ Modificar datos cliente \n 3_ Baja de cliente \n 4_ Crear pedido recoleccion\n 5_ Procesar residuos\n 6_ Imprimir clientes\n 7_ Imprimir pedidos pendientes\n 8_ Imprimir pedidos procesados\n 9_ Pedidos pendientes por localidad\n 10_ Promedio Kg polipropileno\n 11_ Salir \n *********************************\n ");
+	printf("\n *********************************\nIngrese: \n 1_Alta de cliente\n 2_ Modificar datos cliente \n 3_ Baja de cliente \n 4_ Crear pedido recoleccion\n 5_ Procesar residuos\n 6_ Imprimir clientes\n 7_ Imprimir pedidos pendientes\n 8_ Imprimir pedidos procesados\n 9_ Pedidos pendientes por localidad\n 10_ Promedio Kg polipropileno\n 11_ Imprimir cliente con mas pedidos pendientes \n 12_ Imprimir cliente con mas pedidos completados\n 13_ Imprimir cliente con mas pedidos  \n 14_ salir \n *********************************\n ");
 	scanf("%d",&opcionMenu);
 	fflush(stdin);
 	while(opcionMenu<1 || opcionMenu>11){
 		system("cls");
-		printf("Error al seleccionar la opcion. \n\n *********************************\nIngrese: \n 1_Alta de cliente A\n 2_ Modificar datos cliente B\n 3_ Baja de cliente \n 4_ Crear pedido recoleccion\n 5_ Procesar residuos\n 6_ Imprimir clientes\n 7_ Imprimir pedidos pendientes\n 8_ Imprimir pedidos procesados\n 9_ Pedidos pendientes por localidad\n 10_ Promedio Kg polipropileno\n 11_ Salir \n *********************************\n");
+		printf("Error al seleccionar la opcion. \n\n\n *********************************\nIngrese: \n 1_Alta de cliente\n 2_ Modificar datos cliente \n 3_ Baja de cliente \n 4_ Crear pedido recoleccion\n 5_ Procesar residuos\n 6_ Imprimir clientes\n 7_ Imprimir pedidos pendientes\n 8_ Imprimir pedidos procesados\n 9_ Pedidos pendientes por localidad\n 10_ Promedio Kg polipropileno\n 11_ Imprimir cliente con mas pedidos pendientes \n 12_ Imprimir cliente con mas pedidos completados\n 13_ Imprimir cliente con mas pedidos  \n 14_ salir  \n*********************************\n ");
 		scanf("%d",&opcionMenu);
 		fflush(stdin);
 	}
