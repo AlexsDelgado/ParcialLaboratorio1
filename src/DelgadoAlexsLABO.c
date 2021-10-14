@@ -13,15 +13,20 @@ int main(void) {
 	setbuf (stdout, NULL);
 	int idCliente;
 	int idPedido;
+
 	idCliente = 0;
 	idPedido = 0;
+
 	int estadoAux;
+
 	Cli listaClientes[100];
 	Pedido listaPedidos[1000];
-	Localidad listaLocalidad[20];
+	Localidad listaLocalidades[20];
+
 	inicializarClientes(listaClientes);
 	inicializarPedido(listaPedidos);
-	inicializarLocalidad(listaLocalidad);
+	inicializarLocalidad(listaLocalidades);
+
 	int opcionMenu;
 	char terminar='n';
 	do{
@@ -40,11 +45,11 @@ int main(void) {
 			break;
 			case 2:
 				//Modificar datos cliente
-				estadoAux=modificarCliente(listaClientes);
+				estadoAux= modificarLocalidad(listaClientes, listaLocalidades);
 				if(estadoAux!=0){
-					printf("Se modifico correctamente el cliente seleccionado\n");
+					printf("Se modifico correctamente la localidad del cliente seleccionado\n");
 				}else{
-					printf("Error al modificar el cliente seleccionado\n");
+					printf("Error al modificar la localidad del cliente seleccionado\n");
 				}
 
 				system("pause");
@@ -63,14 +68,14 @@ int main(void) {
 			break;
 			case 4:
 				//Crear pedido recoleccion
-				imprimirListaClientes(listaClientes,listaPedidos);
+				imprimirListaClientes(listaClientes,listaPedidos,listaLocalidades);
 				idPedido =pedidoRecoleccion(idPedido, listaPedidos,listaClientes);
 				system("pause");
 				system("cls");
 			break;
 			case 5:
 				//Procesar residuos
-				imprimirListaPedidos(listaClientes, listaPedidos);
+				imprimirListaPedidos(listaClientes, listaPedidos,listaLocalidades);
 				estadoAux=procesarResiduos(listaPedidos);
 				if(estadoAux!=0){
 					printf("Pedido procesado corretamente!");
@@ -80,35 +85,54 @@ int main(void) {
 			break;
 			case 6:
 				//Imprimir clientes
-				imprimirListaPedidos(listaClientes,listaPedidos);
+				imprimirListaPedidos(listaClientes,listaPedidos,listaLocalidades);
 				system("pause");
 				system("cls");
 			break;
 			case 7:
 				//Imprimir pedidos pendientes
-				imprimirListaPedidosPendientes(listaClientes,listaPedidos);
+				imprimirListaPedidosPendientes(listaClientes,listaPedidos,listaLocalidades);
 				system("pause");
 				system("cls");
 			break;
 			case 8:
 				//Imprimir pedidos procesados
-				imprimirListaPedidosProcesados(listaClientes,listaPedidos);
+				imprimirListaPedidosProcesados(listaClientes,listaPedidos,listaLocalidades);
 				system("pause");
 				system("cls");
 			break;
 			case 9:
 				//Listar pedidos por localidad
-				imprimirListaPedidosPorLocalidad(listaClientes,listaPedidos);
+				imprimirListaPedidosPorLocalidad(listaClientes,listaPedidos,listaLocalidades);
 				system("pause");
 				system("cls");
 			break;
 			case 10:
 				//Listar promedio de polipropileno reciclado
-				imprimirPromedioPP(listaClientes,listaPedidos);
+				imprimirPromedioPP(listaClientes,listaPedidos,listaLocalidades);
 				system("pause");
 				system("cls");
 			break;
 			case 11:
+				//Cliente con mas pedidos pendiente
+				imprimirClienteConMasPendientes(listaClientes,listaPedidos,listaLocalidades);
+				system("pause");
+				system("cls");
+			break;
+			case 12:
+				//Cliente con mas pedidos completados
+				imprimirPromedioPP(listaClientes,listaPedidos,listaLocalidades);
+				system("pause");
+				system("cls");
+			break;
+			case 13:
+				//CLiente con mas pedidos
+				imprimirPromedioPP(listaClientes,listaPedidos,listaLocalidades);
+				system("pause");
+				system("cls");
+			break;
+
+			case 14:
 				terminar=confirmar();
 
 			break;

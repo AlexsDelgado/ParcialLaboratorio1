@@ -7,6 +7,14 @@
 #include "Localidad.h"
 #include "Cliente.h"
 
+void inicializarLocalidad(Localidad listaLocalidad[])
+{
+    for(int i=0; i<100; i++)
+    {
+        listaLocalidad[i].isEmpty = 0;
+    }
+}
+
 
 int modificarLocalidad(Cli listaClientes[], Localidad listaLocalidades[]){
     int i;

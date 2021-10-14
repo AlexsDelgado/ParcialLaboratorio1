@@ -22,6 +22,8 @@ typedef struct
 int modificarLocalidad(Cli listaClientes[], Localidad listaLocalidades[]);
 void inicializarLocalidad(Localidad listaLocalidad[]);
 
+int altaLocalidad(Localidad listaLocalidad[],int id);
+
 
 
 #endif /* LOCALIDAD_H_ */

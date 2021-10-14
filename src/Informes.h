@@ -20,5 +20,7 @@ void imprimirListaPedidosPendientes(Cli listaClientes[], Pedido listaPedidos[], 
 void imprimirListaPedidosProcesados(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]);
 void imprimirListaPedidosPorLocalidad(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]);
 void imprimirPromedioPP(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]);
+void imprimirClienteConMasPendientes(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]);
+
 
 #endif /* INFORMES_H_ */

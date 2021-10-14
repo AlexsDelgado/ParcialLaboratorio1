@@ -91,12 +91,10 @@ void imprimirListaPedidosProcesados(Cli listaClientes[], Pedido listaPedidos[], 
 			banderaVacio=1;
 			idForeignKey = listaPedidos[i].numCliente;
 			idForeignKeyLocalidad = listaClientes[idForeignKey].idLocalidad;
-			char direccionLocalidad[100];
-			direccionLocalidad = listaLocalidades[idForeignKeyLocalidad].direccion;
 			if(listaPedidos[i].estadoPedido==1){
 				printf("Pedido n° %d \n",listaPedidos[i].idPedido);
 				printf("\t\tCUIT: %d\tDir: %s\tPP: %.2f kg\tHDPE: %.2f kg\tLDPE: %.2f kg \n",listaClientes[idForeignKey].CUIT,
-												direccionLocalidad,
+						listaLocalidades[idForeignKeyLocalidad].direccion,
 												listaPedidos[i].kgTipoPP,
 												listaPedidos[i].kgTipoHDPE,
 												listaPedidos[i].kgTipoLDPE
@@ -150,5 +148,20 @@ void imprimirPromedioPP(Cli listaClientes[], Pedido listaPedidos[], Localidad li
 	}
 }
 
+void imprimirClienteConMasPendientes(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]){
+	int i;
+	int foreignKey;
+	int contadorPedidos;
+	contadorPedidos=0;
+	for(i=0;i<1000;i++){
+		foreignKey = listaPedidos[i].numCliente;
+		if(listaPedidos[i].estadoPedido==0 && listaClientes[i].idCliente==foreignKey){
+			contadorPedidos
+		}
+	}
 
+
+	printf("Cantidad de pedidos pendientes en la localidad de %s : %d \n",localidad,contadorLocalidad);
+
+}
 
