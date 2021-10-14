@@ -15,8 +15,8 @@ typedef struct
 	int idCliente;
 	char nombreEmpresa[100];
 	int CUIT;
-	char direccion[100];
-	char localidad[100];
+	int idLocalidad;
+
 	int isEmpty;
 
 }Cli;

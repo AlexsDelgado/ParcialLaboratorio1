@@ -21,19 +21,19 @@ int menu(){ //printf de las opciones y recupera la deseada
 	}
 	return opcionMenu;
 }
-void imprimirListaClientes(Cli listaClientes[], Pedido listaPedidos[]){
+void imprimirListaClientes(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]){
 	int i;
 	int cantidadPedidosPendientes;
 	printf("ID\tNombre\t\tCUIT\t\tDireccion\t\tLocalidad\t\tPedidos pendientes\n");
 	for(i=0;i<100;i++){
 		if(listaClientes[i].isEmpty!=0){
 			cantidadPedidosPendientes = cantidadPedidosPendientesPorCliente(listaClientes,listaPedidos,listaClientes[i].idCliente);
-			printf("%d\t%-15s\t%d\t\t%-20s\t%-20s\t\t%d \n \n", listaClientes[i].idCliente, listaClientes[i].nombreEmpresa, listaClientes[i].CUIT,listaClientes[i].direccion, listaClientes[i].localidad, cantidadPedidosPendientes);
+			printf("%d\t%-15s\t%d\t\t%-20s\t%-20s\t\t%d \n \n", listaClientes[i].idCliente, listaClientes[i].nombreEmpresa, listaClientes[i].CUIT,listaLocalidades[i].direccion, listaLocalidades[i].nombrelocalidad, cantidadPedidosPendientes);
 
 		}
 	}
 }
-void imprimirListaPedidos(Cli listaClientes[], Pedido listaPedidos[]){
+void imprimirListaPedidos(Cli listaClientes[], Pedido listaPedidos[],Localidad listaLocalidades[]){
 	//
 	int i;
 	int idForeignKey;
@@ -60,7 +60,7 @@ void imprimirListaPedidos(Cli listaClientes[], Pedido listaPedidos[]){
 	}
 }
 
-void imprimirListaPedidosPendientes(Cli listaClientes[], Pedido listaPedidos[]){
+void imprimirListaPedidosPendientes(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]){
 	int i;
 	int idForeignKey;
 	int banderaVacio;
@@ -69,7 +69,7 @@ void imprimirListaPedidosPendientes(Cli listaClientes[], Pedido listaPedidos[]){
 	for(i=0;i<1000;i++){
 		idForeignKey = listaPedidos[i].numCliente;
 		if(listaPedidos[i].isEmpty!=0 && listaPedidos[i].estadoPedido==0){
-			printf("CUIT: %d\tDireccion %-15s\t%.2f Kg Totales\n",listaClientes[idForeignKey].CUIT,listaClientes[idForeignKey].direccion,listaPedidos[i].kgTotal);
+			printf("CUIT: %d\tDireccion %-15s\t%.2f Kg Totales\n",listaClientes[idForeignKey].CUIT,listaLocalidades[idForeignKey].direccion,listaPedidos[i].kgTotal);
 			banderaVacio=1;
 		}
 	}
@@ -78,21 +78,25 @@ void imprimirListaPedidosPendientes(Cli listaClientes[], Pedido listaPedidos[]){
 	}
 }
 
-void imprimirListaPedidosProcesados(Cli listaClientes[], Pedido listaPedidos[]){
+void imprimirListaPedidosProcesados(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]){
 
 	//
 	int i;
 	int idForeignKey;
+	int idForeignKeyLocalidad;
 	int banderaVacio;
 	banderaVacio = 0;
 	for(i=0;i<1000;i++){
 		if(listaPedidos[i].isEmpty!=0){
 			banderaVacio=1;
 			idForeignKey = listaPedidos[i].numCliente;
+			idForeignKeyLocalidad = listaClientes[idForeignKey].idLocalidad;
+			char direccionLocalidad[100];
+			direccionLocalidad = listaLocalidades[idForeignKeyLocalidad].direccion;
 			if(listaPedidos[i].estadoPedido==1){
 				printf("Pedido n° %d \n",listaPedidos[i].idPedido);
-				printf("\t\tCUIT: %d\tDir: %-15s\tPP: %.2f kg\tHDPE: %.2f kg\tLDPE: %.2f kg \n",listaClientes[idForeignKey].CUIT,
-												listaClientes[idForeignKey].direccion,
+				printf("\t\tCUIT: %d\tDir: %s\tPP: %.2f kg\tHDPE: %.2f kg\tLDPE: %.2f kg \n",listaClientes[idForeignKey].CUIT,
+												direccionLocalidad,
 												listaPedidos[i].kgTipoPP,
 												listaPedidos[i].kgTipoHDPE,
 												listaPedidos[i].kgTipoLDPE
@@ -105,9 +109,10 @@ void imprimirListaPedidosProcesados(Cli listaClientes[], Pedido listaPedidos[]){
 	}
 }
 
-void imprimirListaPedidosPorLocalidad(Cli listaClientes[], Pedido listaPedidos[]){
+void imprimirListaPedidosPorLocalidad(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]){
 	int i;
 	int foreignKey;
+	int foreignKeyLocalidad;
 	char localidad[100];
 	int contadorLocalidad;
 	contadorLocalidad=0;
@@ -116,9 +121,10 @@ void imprimirListaPedidosPorLocalidad(Cli listaClientes[], Pedido listaPedidos[]
 
 	for(i=0;i<1000;i++){
 		foreignKey= listaPedidos[i].numCliente;
+		foreignKeyLocalidad = listaClientes[foreignKey].idLocalidad;
 		if(listaPedidos[i].isEmpty!=0){
 			//&& listaPedidos[i].estadoPedido==0
-			auxComparar=strcmp(listaClientes[foreignKey].localidad, localidad);
+			auxComparar=strcmp(listaLocalidades[foreignKeyLocalidad].nombrelocalidad, localidad);
 			if(auxComparar==0 && listaPedidos[i].estadoPedido==0 ){
 				contadorLocalidad++;
 			}
@@ -127,7 +133,7 @@ void imprimirListaPedidosPorLocalidad(Cli listaClientes[], Pedido listaPedidos[]
 	printf("Cantidad de pedidos pendientes en la localidad de %s : %d \n",localidad,contadorLocalidad);
 
 }
-void imprimirPromedioPP(Cli listaClientes[], Pedido listaPedidos[]){
+void imprimirPromedioPP(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]){
 	int contClientes;
 	int contKgPP;
 	float promedio;

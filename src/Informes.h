@@ -9,15 +9,16 @@
 #include "Cliente.h"
 #include "Pedido.h"
 #include "BibliotecaUTN.h"
+#include "Localidad.h"
 
 
 
 int menu();
-void imprimirListaPedidos(Cli listaClientes[], Pedido listaPedidos[]);
-void imprimirListaClientes(Cli listaClientes[], Pedido listaPedidos[]);
-void imprimirListaPedidosPendientes(Cli listaClientes[], Pedido listaPedidos[]);
-void imprimirListaPedidosProcesados(Cli listaClientes[], Pedido listaPedidos[]);
-void imprimirListaPedidosPorLocalidad(Cli listaClientes[], Pedido listaPedidos[]);
-void imprimirPromedioPP(Cli listaClientes[], Pedido listaPedidos[]);
+void imprimirListaPedidos(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]);
+void imprimirListaClientes(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]);
+void imprimirListaPedidosPendientes(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]);
+void imprimirListaPedidosProcesados(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]);
+void imprimirListaPedidosPorLocalidad(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]);
+void imprimirPromedioPP(Cli listaClientes[], Pedido listaPedidos[], Localidad listaLocalidades[]);
 
 #endif /* INFORMES_H_ */

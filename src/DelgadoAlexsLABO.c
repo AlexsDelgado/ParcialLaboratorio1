@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "Localidad.h"
 #include "Cliente.h"
 #include "Pedido.h"
 #include "informes.h"
@@ -17,8 +18,10 @@ int main(void) {
 	int estadoAux;
 	Cli listaClientes[100];
 	Pedido listaPedidos[1000];
+	Localidad listaLocalidad[20];
 	inicializarClientes(listaClientes);
 	inicializarPedido(listaPedidos);
+	inicializarLocalidad(listaLocalidad);
 	int opcionMenu;
 	char terminar='n';
 	do{

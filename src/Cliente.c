@@ -25,8 +25,8 @@ int altaCliente(Cli listaClientes[],int id){
         getString(listaClientes[id].nombreEmpresa,"Ingresar nombre de la empresa", 100);
         listaClientes[id].CUIT= ingresarEntero("Ingresa el CUIT de la empresa");
 
-    	getString(listaClientes[id].direccion,"Ingresar direccion de la empresa", 100);
-    	getString(listaClientes[id].localidad,"Ingresar localidad de la empresa", 100);
+    	//getString(listaClientes[id].direccion,"Ingresar direccion de la empresa", 100);
+    	//getString(listaClientes[id].localidad,"Ingresar localidad de la empresa", 100);
 
     	listaClientes[id].isEmpty = 1;
 
@@ -35,26 +35,6 @@ int altaCliente(Cli listaClientes[],int id){
 
 }
 
-int modificarCliente(Cli listaClientes[]){
-    int i;
-    int idClienteSeleccionado;
-    int estadoModificacion;
-    estadoModificacion = 0;
-
-    idClienteSeleccionado = ingresarEntero("Ingrese el ID del cliente a modificar");
-
-    for(i=0;i<100;i++)
-    {
-        if(listaClientes[i].isEmpty==1 && listaClientes[i].idCliente==idClienteSeleccionado)
-        {
-			getString(listaClientes[i].direccion,"Ingresar la nueva direccion de la empresa", 100);
-			getString(listaClientes[i].localidad,"Ingresar la nueva localidad de la empresa", 100);
-			estadoModificacion = 1;
-			break;
-        }
-    }
-    return estadoModificacion;
-}
 
 int bajaCliente(Cli listaClientes[]){
     int i;
